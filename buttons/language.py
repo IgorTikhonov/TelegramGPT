@@ -1,6 +1,7 @@
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, CallbackContext
 
+from buttons.templates import say_lang
 from db.MySqlConn import Mysql
 from config import CHOOSING
 
@@ -8,6 +9,7 @@ from config import CHOOSING
 async def show_languages(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [
+            InlineKeyboardButton("Русский", callback_data='lang_ru'),
             InlineKeyboardButton("English", callback_data='lang_en'),
             InlineKeyboardButton("中文", callback_data='lang_cn'),
         ]
@@ -32,5 +34,4 @@ async def show_languages_callback_handle(update: Update, context: ContextTypes.D
     mysql.update("update users set lang=%s where user_id=%s", (lang, user_id))
     mysql.end()
 
-    await query.edit_message_text(
-        text="Language changed to 🇬🇧 English" if lang == "en" else "语言已更改为 🇨🇳 中文")
+    await query.edit_message_text(say_lang[lang])

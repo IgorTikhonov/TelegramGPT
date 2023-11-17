@@ -6,6 +6,7 @@
 """
 
 import pymysql
+import time
 from dbutils.pooled_db import PooledDB
 from config import config
 
@@ -47,6 +48,8 @@ class Mysql(object):
                               database=config["MYSQL"]["DBNAME"],
                               charset=config["MYSQL"]["DBCHAR"],
                               cursorclass=pymysql.cursors.DictCursor)
+            date_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            print(date_time,"POOL:::::::::",__pool)
         return __pool.connection()
 
     def getAll(self, sql, param=None):

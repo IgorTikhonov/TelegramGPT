@@ -5,6 +5,7 @@ CREATE TABLE `users` (
   `name` varchar(100) DEFAULT NULL,
   `user_id` bigint DEFAULT NULL,
   `level` tinyint DEFAULT NULL,
+  `lang` varchar(2) DEFAULT 'en',
   `parse_mode` varchar(10) DEFAULT 'Markdown',
   `system_content` varchar(1024) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,

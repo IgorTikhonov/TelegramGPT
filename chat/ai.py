@@ -17,15 +17,7 @@ async def ChatCompletionsAI(logged_in_user, messages) -> (str, str):
 
     # Setup AI
     openai.api_key = config["AI"]["TOKEN"]
-
-    if config["AI"]["TYPE"] == "azure":
-        openai.api_type = config["AI"]["TYPE"]
-        openai.api_base = config["AI"]["BASE"]
-        openai.api_version = config["AI"]["VERSION"]
-        OPENAI_CHAT_COMPLETION_OPTIONS["engine"] = config["AI"]["ENGINE"]
-    else:
-        OPENAI_CHAT_COMPLETION_OPTIONS["model"] = "gpt-3.5-turbo"
-
+    OPENAI_CHAT_COMPLETION_OPTIONS["model"] = "gpt-3.5-turbo"
     response = await openai.ChatCompletion.acreate(
         messages=messages,
         max_tokens=token[level],

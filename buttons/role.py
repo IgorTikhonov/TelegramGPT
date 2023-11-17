@@ -43,8 +43,8 @@ async def set_system_content_handler(update: Update, context: ContextTypes.DEFAU
     user = mysql.getOne("select * from users where user_id=%s", user_id)
     mysql.end()
     system_content = update.message.text.strip()
-    if system_content in ("取消", "取消重置", "🚫取消", "cancel", "reset"):
-        await update.message.reply_text(text="已取消。\n您可以继续向我提问了" if user["lang"] == "cn" else "Canceld. \nYou can continue to ask me questions now.",
+    if system_content in ("取消", "取消重置", "🚫取消", "cancel", "reset", "🚫Cancel", "отмена"):
+        await update.message.reply_text(text="Отмена. \nПродолжайте меня спрашивать." if user["lang"] == "ru" else "Canceld. \nYou can continue to ask me questions now.",
                                         reply_markup=reply_markup, parse_mode='Markdown')
     else:
         user_id = update.effective_user.id
