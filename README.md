@@ -5,15 +5,22 @@
 ![db](https://img.shields.io/badge/db-MySQL8-ff69b4.svg)
 [![openai-version](https://img.shields.io/badge/openai-0.27.6-orange.svg)](https://openai.com/)
 [![license](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
-[![bot](https://img.shields.io/badge/TelegramBot-@RoboAceBot-blueviolet.svg)](https://t.me/RoboAceBot)
 
-English | [中文](README-zh.md)
+## 🥰️️️️️️Before everything
+
+The solution is based on https://github.com/V-know/ChatGPT-Telegram-Bot v1.0.3.
+
+written by [V-know](https://github.com/V-know).
+
+Thank you, V-know, very much for your contribution to the development of convenient modern intelligent solutions available to the average Python user.
+
+## 📄General info
 
 A Telegram bot with a smooth AI experience.
 
 ## ⚡Feature
 
-[✓] Support for both Azure OpenAI and native OpenAI.
+[✓] Support only native OpenAI. For Azure OpenAI use: https://github.com/V-know/ChatGPT-Telegram-Bot
 
 [✓] Real-time (streaming) response to AI, with faster and smoother experience.
 
@@ -31,17 +38,26 @@ A Telegram bot with a smooth AI experience.
 
 [✓] More...
 
-## 👨‍💻TODO
+## Release 1.1.0 from 17.11.2023 notes
 
-[x] Allow users to use their own OpenAI Key in the bot to gain more freedom.
+[✓] Russian language supported.
 
-[x] Improve ErrorHandler.
+[✓] The database creation script has been fixed, a “lang” column has been added to record the bot language selected by the user. The default language is English.
 
-[x] Containerization.
+[✓] Fixed incorrectly changing the bot's role to "cancel" when user clicking the cancel button in the Сustom roles menu.
+
+[✓] Information text templates for the selected language have been moved to templates.py.
+
+[✓] Start message text templates have been moved to templates.py.
+
+[✓] Updated configuration file, removed support for Azure OpenAI.
+
+[✓] Added date and time logging for pooling event.
+
 
 ## 🤖Quick Experience
 
-Telegram Bot: [RoboAceBot](https://t.me/RoboAceBot)
+Telegram Bot: [VassermannBot](https://t.me/VassermannBot)
 
 ## 🛠️Deployment
 
@@ -79,22 +95,11 @@ All the required configurations are in `config.yaml`, please refer to `config.ya
 | `TIME_SPAN`         | No       | The time window size used to calculate the ratelimit, in minutes.                                                                                                                                                                                           |
 | `RATE_LIMIT`        | No       | `key` is the user level, and `value` is the maximum number of chats that can be made within the TIME_SPAN time period.                                                                                                                                      |
 | `CONTEXT_COUNT`     | No       | `key` is the user level, and `value` is the number of contexts included in each chat.                                                                                                                                                                       |
-| `MAX_TOKEN`         | No       | `key` is the user level, and `value` is the maximum number of tokens returned by the AI per chat.                                                                                                                                                           |
-| `AI`.`TYPE`         | Yes      | The type of AI used, with two options: `openai` and `azure`. The default is `openai`.                                                                                                                                                                       |                           
-| `AI`.`BASE`         | Yes      | When checking resources from the Azure portal, this value can be found in the "Keys and Endpoints" section. Alternatively, this value can be found in "Azure OpenAI Studio" > "Playground" > "Code View". Only needs to be set when `AI`.`TYPE` is `azure`. |
-| `AI`.`ENGINE`       | Yes      | The deployment name of Azure OpenAI, only needs to be set when `AI`.`TYPE` is `azure`.                                                                                                                                                                      |
-| `AI`.`VERSION`      | Yes      | The version number of Azure OpenAI, only needs to be set when `AI`.`TYPE`is `azure`.                                                                                                                                                                        |
+| `MAX_TOKEN`         | No       | `key` is the user level, and `value` is the maximum number of tokens returned by the AI per chat.                                                                                                                                                                         |
 
-If you are using Azure's OpenAI, you can obtain all the required content at this link:
-
-[Get started using ChatGPT and GPT-4 with Azure OpenAI Services](https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/chatgpt-quickstart?pivots=programming-language-python&tabs=command-line)
 
 ## 🚀Start
 
 ```shell
 python main.py | tee >> debug.log
 ```
-
-## ❤️In Conclusion
-
-I hope this project can provide you with a smooth AI experience and help more people create and use their own Telegram bots.
